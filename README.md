@@ -1,4 +1,4 @@
-#WebSys Job Application Tracker
+##**WebSys Job Application Tracker**
 
 This is a Web App for tracking job applications, built for CGS3853 Web Systems for IT (Project 4)
 
