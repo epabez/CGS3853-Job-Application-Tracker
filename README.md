@@ -8,7 +8,7 @@ This is a Web App for tracking job applications, built for CGS3853 Web Systems f
 
 ## Setup
 
-1. Create a Supabase project and run 'schema.sql' in the SQL Editor
+1. Create a Supabase project and run 'additionalfiles/schema.sql' in the SQL Editor
 2. In your JS file, replace the URL and the publishable key with the free Supabase DB
 3. Open HTML file in browser
 
@@ -16,11 +16,11 @@ This is a Web App for tracking job applications, built for CGS3853 Web Systems f
 
 Below is a photo of the database table utilized inside of the application
 
-![Supabase job_applications table](Additional%Files\EthanVasquezSupaBasetablescreenshotProject4.png)
+![Supabase job_applications table](additionalfiles/EthanVasquezSupaBasetablescreenshotProject4.png)
 
 ## Web App up and functioning with Sample Data
 
-![Web App with Sample Data](Additional%Files\CompletedWebsitewithDatafromDB.png)
+![Web App with Sample Data](additionalfiles/CompletedWebsitewithDatafromDB.png)
 
 ## Notes
 The RLS policies are demo-only and allow anyone to READ & INSERT records, they'll be removed after grading.
