@@ -9,16 +9,61 @@
     <h1>Welcome to Job Application Tracker</h1>
     <p>Track and manage your job applications</p>
 
-    <button id="loadBtn">View Our Jobs</button>
+
+    <h2>Add an Application</h2>
+    <form id="applicationForm">
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" required><br><br>
+
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required><br><br>
+
+        <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                   <option value="">Select status</option>
+                    <option value="Not Applied Yet">Not Applied Yet</option>
+                    <option value="Applied">Applied</option>
+                    <option value="Online Assessment">Online Assessment</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+            </select><br><br>
+
+        <label for="fitScore">Fit Score (1-10):</label>
+            <input type="number" id="fitScore" min="1" max="10">
+
+        <label for="resumeUsed">Resume Used:</label>
+            <input type="text" id="resumeUsed" placeholder="e.g. SWE_v4">
+
+        <label for="dateApplied">Date Applied:</label>
+            <input type="date" id="dateApplied">
+
+        <label for="jobUrl">Job Posting URL:</label>
+            <input type="url" id="jobUrl" placeholder="https://...">
+
+        <button type="submit">Add Application</button>
+    </form>
+    <p id="statusMessage"></p>
 
     <h2>Job Listings</h2>
+
+    <button id="loadBtn">View Jobs</button>
+
     <div id="jobList"></div>
+
+
+
+
+
+
+
 
     <!-- Supabase library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <!-- Our JavaScript -->
     <script src="script.js"></script>
+
+
 
 </body>
 </html>

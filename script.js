@@ -60,5 +60,59 @@ async function loadApplications() {
 }
 
 
+//INSERT Record Add a new job application to the database
+const applicationForm = document.getElementById("applicationForm");
+const statusMessage = document.getElementById("statusMessage");
+
+async function addApplication(event) { 
+    event.preventDefault();
+
+    const newApplication = {
+        company: document.getElementById("company").value.trim(),
+        job_title: document.getElementById("position").value.trim(),
+        application_status: document.getElementById("status").value,
+        fit_score: Number(document.getElementById("fitScore").value) || null,
+        resume_used: document.getElementById("resumeUsed").value.trim() || null,
+        job_url: document.getElementById("jobUrl").value.trim() || null
+    };
+
+    const dateValue = document.getElementById("dateApplied").value;
+        if (dateValue) newApplication.date_applied = dateValue;
+
+        if (!newApplication.company || !newApplication.job_title) {
+            showMessage("Company and Job Title are required.", "error");
+            return;
+        }
+
+    const submitBtn = applicationForm.querySelector("button[type='submit']");
+        submitBtn.disabled = true;
+        showMessage("Saving...", "info");
+
+    const { error } = await db.from("job_applications").insert([newApplication]);
+
+        submitBtn.disabled = false;
+
+    if (error) {
+        console.error(error);
+        showMessage(`Could not save application: ${error.message}`, "error");
+        return;
+    }
+
+    showMessage(`Added ${newApplication.company} - ${newApplication.job_title}.`, "success");
+    applicationForm.reset();
+    loadApplications();
+    }
+
+    // Show status messages to the user
+    function showMessage(text, type) {
+    statusMessage.textContent = text;
+    statusMessage.className = type; // style .success, .error, .info in CSS
+}
+
+
+
 // Load applications on page load when button is pressed
 document.getElementById("loadBtn").addEventListener("click", loadApplications);
+
+// Run addApplication when the form is submitted
+applicationForm.addEventListener("submit", addApplication);
