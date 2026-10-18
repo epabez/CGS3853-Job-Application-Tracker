@@ -1,0 +1,171 @@
+/* = Base = */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px 16px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6f8;
+    color: #1f2933;
+    line-height: 1.5;
+}
+
+header,
+.layout {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header {
+    margin-bottom: 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+header p {
+    margin: 4px 0 0;
+    color: #504b4b;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+/* = Layout: list on the left, form on the right = */
+.layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* The form comes first in the HTML, so this moves the list into the left column
+   (and to the top on phones) without changing the HTML order */
+
+.list-section {
+    order: -1;
+}
+
+.list-section,
+.form-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* = Form = */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #add6ff;
+    border-radius: 6px;
+    background: #ffffff;
+    font: inherit;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #0051ff;
+    border-color: #0051ff;
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    background: #33404e;
+    cursor: not-allowed;
+}
+
+form button {
+    margin-top: 16px;
+}
+
+#loadBtn {
+    margin-bottom: 16px;
+    background: transparent;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+#loadBtn:hover {
+    background: #eff6ff;
+}
+
+/* = Status message = */
+#statusMessage {
+    margin: 12px 0 0;
+    font-weight: 600;
+}
+
+.success { color: #15803d; }
+.error   { color: #b91c1c; }
+.info    { color: #52606d; }
+
+/* = Application cards = */
+.app-card {
+    border: 1px solid #e4e7eb;
+    border-left: 5px solid #9aa5b1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+}
+
+.app-card h3 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.app-card p {
+    margin: 2px 0;
+    color: #52606d;
+    font-size: 0.95rem;
+}
+
+/* Color-code the left border by status */
+.app-card[data-status="Not Applied Yet"]   { border-left-color: #757575; }
+.app-card[data-status="Applied"]           { border-left-color: #0051ff; }
+.app-card[data-status="Online Assessment"] { border-left-color: #5d00ff; }
+.app-card[data-status="Interviewing"]      { border-left-color: #ff8800; }
+.app-card[data-status="Offer"]             { border-left-color: #00ff5e; }
+.app-card[data-status="Rejected"]          { border-left-color: #ff0000; }
+
+/* ===== Phones and small screens: stack the columns ===== */
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}

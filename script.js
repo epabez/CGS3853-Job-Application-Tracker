@@ -52,6 +52,17 @@ async function loadApplications() {
             `Fit: ${fit} | Resume: ${app.resume_used || "N/A"} | Applied: ${app.date_applied || "N/A"}`;
 
     card.append(heading, status, details);
+
+    // Add a clickable link to the job posting under the Fit line, if the row has a URL
+    if (app.job_url) {
+        const link = document.createElement("a");
+        link.href = app.job_url;
+        link.textContent = "View posting";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        card.append(link);
+    }
+
     jobList.appendChild(card);
 
   });

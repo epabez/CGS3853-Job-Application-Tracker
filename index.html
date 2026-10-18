@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<header>
     <h1>Welcome to Job Application Tracker</h1>
     <p>Track and manage your job applications</p>
+</header>
 
-
+<main class="layout">
+    <section class="form-section">
     <h2>Add an Application</h2>
     <form id="applicationForm">
         <label for="company">Company:</label>
-        <input type="text" id="company" name="company" required><br><br>
+        <input type="text" id="company" name="company" required>
 
         <label for="position">Position:</label>
-        <input type="text" id="position" name="position" required><br><br>
+        <input type="text" id="position" name="position" required>
 
         <label for="status">Status:</label>
             <select id="status" name="status" required>
@@ -27,7 +31,7 @@
                     <option value="Interviewing">Interviewing</option>
                     <option value="Offer">Offer</option>
                     <option value="Rejected">Rejected</option>
-            </select><br><br>
+            </select>
 
         <label for="fitScore">Fit Score (1-10):</label>
             <input type="number" id="fitScore" min="1" max="10">
@@ -44,19 +48,16 @@
         <button type="submit">Add Application</button>
     </form>
     <p id="statusMessage"></p>
+    </section>
 
+    <section class="list-section">
     <h2>Job Listings</h2>
 
     <button id="loadBtn">View Jobs</button>
 
     <div id="jobList"></div>
-
-
-
-
-
-
-
+    </section>
+</main>
 
     <!-- Supabase library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
